@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
+import playersReducer from './players';
+import ActiveLine from './active_line';
+
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+	players: playersReducer,
+	activeLine: ActiveLine
 });
 
 export default rootReducer;
