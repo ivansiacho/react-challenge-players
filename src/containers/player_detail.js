@@ -1,18 +1,16 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
+import { selectedPlayer } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 class PlayerDetail extends Component {
-	constructor(props) {
-		super(props);
-		console.log(props);
-	}
-
 	renderList(players, activeLine) {
 		return players[`${activeLine}`].map((player, index) => {
 			return (
 				<li
 					key={index}
-					className="">
+					className=""
+					onClick={() => this.props.selectedPlayer(player.name)}>
 					{player.name}
 				</li>
 			);
@@ -20,11 +18,12 @@ class PlayerDetail extends Component {
 	}
 
 	render() {
-		const { activeLine, players } = this.props;
-
+		const { activeLine, players, activePlayer } = this.props;
+		console.log(activePlayer);
+		
 		if (!activeLine) {
 			return (
-				<div>lololo</div>
+				<div>no players</div>
 			);
 		}
 
@@ -41,8 +40,15 @@ class PlayerDetail extends Component {
 function mapStateToProps(state) {
 	return {
 		activeLine: state.activeLine,
-		players: state.players
+		players: state.players,
+		activePlayer: state.activePlayer
 	};
 }
 
-export default connect(mapStateToProps)(PlayerDetail);
+/* Anything returned of this function will end up as props on the PlayerList container */
+function mapDispatchToProps(dispatch) {
+	/* Whenever selectLine is called, the result should be passed to all our reducers */
+	return bindActionCreators({ selectedPlayer: selectedPlayer }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerDetail);

@@ -5,14 +5,14 @@ import { bindActionCreators } from 'redux';
 
 class PlayerList extends Component {
 	renderList() {
-		console.log(this.props.activeLine);
-		const { playerPosition, selectLine } = this.props;
+		const { playerPosition, selectLine, players } = this.props;
+		const playerList = players[`${playerPosition}`].filter((player) => player.active);
 
-		return this.props.players[`${playerPosition}`].map((player, index) => {
+		return playerList.map((player, index) => {
 			return (
 				<li
 					key={index}
-					className={player.active ? 'list-group-item active' : 'list-group-item'}
+					className={`section-players__player ${playerPosition}${index} ${player.active ? 'active' : ''}`}
 					onClick={() => selectLine(playerPosition)}>
 					{player.name}
 				</li>
@@ -22,7 +22,7 @@ class PlayerList extends Component {
 
 	render() {
 		return (
-			<ul className="list-group col-md-4">
+			<ul className={`section-players ${this.props.playerPosition}`}>
 				{this.renderList()}
 			</ul>
 		);
@@ -32,8 +32,7 @@ class PlayerList extends Component {
 function mapStateToProps(state) {
 	/* Whatever is returned will show up as props inside of PlayerList */
 	return {
-		players: state.players,
-		activeLine: state.activeLine
+		players: state.players
 	};
 }
 

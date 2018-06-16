@@ -4,3 +4,10 @@ export function selectLine(line) {
 		payload: line
 	};
 }
+
+export function selectedPlayer(playerName) {
+	return {
+		type: 'PLAYER_SELECTED',
+		payload: playerName
+	};
+}

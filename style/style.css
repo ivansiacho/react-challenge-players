@@ -1,0 +1,90 @@
+.container {
+    padding: 10px;
+}
+
+.soccer-field {
+    background: url('../images/field.jpg') no-repeat 0 0;
+    background-size: cover;
+    width: 1024px;
+    height: 1486px;
+    padding: 108px 70px;
+    box-sizing: border-box;
+}
+
+.section-players {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+}
+
+.section-players__player {
+    background: url('../images/empty.png') no-repeat 0 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    width: 82px;
+    height: 89px;
+}
+
+.goalkeepers {
+    height: 200px;
+}
+
+.goalkeepers0 {
+    left: calc(50% - 41px);
+}
+
+.defenders {
+    height: 400px;;
+}
+
+.defenders0 {
+    left: 5%;
+}
+
+.defenders1 {
+    left: 30%;
+}
+
+.defenders2 {
+    right: 30%;
+}
+
+.defenders3 {
+    right: 5%;
+}
+
+.midfielders {
+    height: 400px;
+}
+
+.midfielders0 {
+    left: 5%;
+}
+
+.midfielders1 {
+    left: 30%;
+}
+
+.midfielders2 {
+    right: 30%;
+}
+
+.midfielders3 {
+    right: 5%;
+}
+
+.fordwards {
+    height: 300px;
+}
+
+.fordwards0 {
+    left: 35%;
+}
+
+.fordwards1 {
+    right: 35%;
+}
